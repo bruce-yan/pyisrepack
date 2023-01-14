@@ -382,11 +382,11 @@ class PyInstArchive:
                 break
         
         if not findEntry:
-            print("原始包中没有找到 {}".format(fileName))
+            print("{} entry not found.".format(fileName))
             return
 
         if findEntry.typeCmprsData != b's':
-            print("目前只支持 type 为 s 的文件替换. 可使用 pyi-archive_viewer 查看类型".format(fileName))
+            print("Only support 's' entry type. use pyi-archive_viewer to lookat types".format(fileName))
             return
 
         oldPos = findEntry.position
@@ -442,9 +442,6 @@ class PyInstArchive:
 
             bodyLen = newLengthofPackage + newTocLen
             # 4. 写入文件尾
-            #self.fPtr.seek(self.cookiePos, os.SEEK_SET)
-            # fileTail = self.fPtr.read()
-
             if self.pyinstVer == 20:
                 self.fPtr.seek(self.cookiePos, os.SEEK_SET)
 
@@ -475,9 +472,9 @@ class PyInstArchive:
 
 def paramToOpt():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-ori', "--originalfile", default=None, type=str, help='原始exe')
-    parser.add_argument('-p', "--pyc", default=None, type=str, help='替换文件')
-    parser.add_argument('-o', "--output", default=None, type=str, help='输出文件')
+    parser.add_argument('-ori', "--originalfile", default=None, type=str, help='original exe')
+    parser.add_argument('-p', "--pyc", default=None, type=str, help='pyc file')
+    parser.add_argument('-o', "--output", default=None, type=str, help='output file')
     opt = parser.parse_args()
     return opt
 
@@ -485,7 +482,7 @@ def paramToOpt():
 def main():
     opt = paramToOpt()
     if not opt.originalfile or not opt.pyc:
-        print('[+] Usage: pyinsrepack.py -ori <原始exe> -p <pyc文件> -o <输出文件>')
+        print('[+] Usage: pyinsrepack.py -ori <original exe> -p <pyc file> -o <output file>')
         return
     arch = PyInstArchive(opt.originalfile)
     if not arch.open():
