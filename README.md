@@ -33,7 +33,7 @@ if __name__ == "__main__":
 ```
 运行效果如下
 
-![pic1](https://gitee.com/bruce_code/pyisrepack/blob/master/docimgs/1.png)
+![pic1](docimgs/1.png)
 
 我们将通过以下步骤将 Hello world 改为 Hello earth
 #### Step1. 使用 [pyinstxtractor](https://github.com/extremecoders-re/pyinstxtractor) 将 exe 拆包
@@ -42,7 +42,7 @@ python pyinstxtractor.py main.exe
 ```
 得到如下文件
 
-![pic2](https://gitee.com/bruce_code/pyisrepack/blob/master/docimgs/2.png)
+![pic2](docimgs/2.png)
 
 其中main.pyc是我们要修改的文件
 
@@ -63,11 +63,11 @@ uncompyle6 -c main.py
 
 #### Step5. 使用 pyisrepack.py 将 pyc 重新压入 exe
 ```
-Usage: python pyisrepack.py -ori main.exe -p main.pyc -o new_main.exe
+python pyisrepack.py -ori main.exe -p main.pyc -o new_main.exe
 ```
 
 #### Step6. 运行效果
-![pic3](https://gitee.com/bruce_code/pyisrepack/blob/master/docimgs/3.png)
+![pic3](docimgs/3.png)
 
 ### **Important**
 ***
